@@ -1,1 +1,95 @@
-hello world
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" /> 
+	
+		<title>Esmorzar D&D 5e Campaign</title>
+	
+	<link rel=icon href="favicon.png" type="image/png">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto400:900' rel='stylesheet' type='text/css'>
+	
+	<style type="text/css">
+		body {
+			padding: 0; margin: 0;
+			background-color: rgba(38,53,58,1);
+			color: white;
+			
+			font-family: 'Roboto', sans-serif; 
+			font-weight: 300;
+		}
+		
+		header {
+			padding: 32px;
+			height: 64px;
+			text-align: center;
+			
+			font-family: 'Roboto Slab', serif; 
+			font-size: 32px;
+			font-weight: 700;
+		}
+		header span {display: block; font-size: 16px; font-weight: 300; font-style: italic;}
+		
+		div#map {
+			height: 500px;
+			background-color: rgba(165,210,212,1);
+		}
+		
+		section#content {
+			display: block;
+			margin: 32px auto 32px;
+			max-width: 800px;
+			text-align: justify;
+		}
+		.subD {padding-left: 16px;}
+		
+		h1, h2, h3, {
+			font-family: 'Roboto Slab', serif;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		Esmorzar
+		<!--<span>The Western Continent</span>-->
+		<span>Third jewel of Ourobos</span>
+	</header>
+	
+    <div id="map" ></div>
+	
+	<section id="content">
+		<!--<p>West and South-West of * and *, Esmorzar is one of the four jewels of Ourobos</p>--> 
+		<p></p>
+		<h2>Regions</h2>
+		<p>ds</p>
+		<div class="subD">
+			<h3>Endling</h3>
+			<p>ds</p>
+			<h3>Shatterlands</h3>
+			<h3>Leylands</h3>
+			<h3>The Drifting Cape</h3>
+			<h3>The Crawling Kingdom</h3>
+			<h3>Greedy</h3>
+		</div>
+		<h2>Religion</h2>
+		Esmorzar 
+		<div class="subD">
+		
+		</div>
+	</section>
+	
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([0, 0], 1);
+		map.on('click', function(e) {
+			alert(e.latlng);
+		});
+        L.tileLayer('map/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 3,
+            attribution: '@AZEZAROO &copy;',
+			noWrap: true,
+            tms: true
+        }).addTo(map);
+    </script>
+</body>
+</html>
