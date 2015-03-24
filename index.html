@@ -11,11 +11,16 @@
 	<style type="text/css">
 		body {
 			padding: 0; margin: 0;
-			background-color: rgba(38,53,58,1);
+			background-color: rgba(36, 32, 32, 1);
 			color: white;
 			
 			font-family: 'Roboto', sans-serif; 
+			font-size: 14px;
 			font-weight: 300;
+		}
+		
+		h1, h2, h3, {
+			font-family: 'Roboto Slab', serif;
 		}
 		
 		header {
@@ -31,7 +36,11 @@
 		
 		div#map {
 			height: 500px;
-			background-color: rgba(165,210,212,1);
+			//background: url("mapseapattern.png") center rgba(165,210,212,1);
+			background: center rgba(165,210,212,1);
+			
+			color: rgba(32,32,32,1);
+			transition: .3s all;
 		}
 		
 		section#content {
@@ -40,17 +49,25 @@
 			max-width: 800px;
 			text-align: justify;
 		}
-		.subD {padding-left: 16px;}
+		.subD {padding: 0 16px; list-style-type: none;}
+		.cityDesc {font-size: 12px; clear: both;}
+		.cityDesc span {
+			display: inline-block; 
+			padding: 1px 4px; margin: 0 2px;
+			background: rgba(169, 73, 80, 0.32); border-radius: 4px;
+		}
 		
-		h1, h2, h3, {
-			font-family: 'Roboto Slab', serif;
+		@media (min-width:1000px) {
+			div#map{
+				height: 600px;
+				transition: .3s all;
+			}
 		}
 	</style>
 </head>
 <body>
 	<header>
 		Esmorzar
-		<!--<span>The Western Continent</span>-->
 		<span>Third jewel of Ourobos</span>
 	</header>
 	
@@ -60,29 +77,75 @@
 		<!--<p>West and South-West of * and *, Esmorzar is one of the four jewels of Ourobos</p>--> 
 		<p></p>
 		<h2>Regions</h2>
-		<p>ds</p>
-		<div class="subD">
-			<h3>Endling</h3>
-			<p>ds</p>
-			<h3>Shatterlands</h3>
-			<h3>Leylands</h3>
-			<h3>The Drifting Cape</h3>
-			<h3>The Crawling Kingdom</h3>
-			<h3>Greedy</h3>
-		</div>
+		<p>West and South-West of Hemmderall and Catal, Esmorzar is one of the 4 continents of Ourobos.</p>
+		<p>Esmorzar is split into 5(6) regions of land.</p>
+		<ul>
+		<li>The major race in this continent is human.</li></ul>
+		<ul class="subD">
+			<li>
+				<h3>Endling</h3>
+				<ul>
+					<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in Godsend, Esmorzar's Major city, previous home of the pantheon</p><div class="cityDesc"><span>=</span></div>
+				</ul>
+			</li>
+			<li>
+				<h3>Shatterlands</h3>
+				<ul>
+					<p>The Shatterlands is covered in deserts and rock and many islands help extend this region.</p><div class="cityDesc"><span>The Scorchedwastes is a section of map filled with constantly eroding and burning Earth. (It's pretty hot)</span></div>
+				</ul>
+			</li>
+			<li>
+				<h3>Leylands</h3>
+				<ul>
+					<p>The most magical region in Esmorzar, the Leylands, has become home to many elf and the like. This region also has the most mage towers compared to the others.</p>
+					<p>This region has a large wall of mountains bordering itself from the Shatterlands' Scorchedwastes and parts of the Endling Kingdom.</p>
+					<div class="cityDesc"><span>The Leylands is majorly held by elfkin in Myeiwar and other forested sections of the Leylands</span></div>
+				</ul>
+			</li>
+			<li>
+				<h3>The Drifting Cape</h3>
+				<ul>
+					<p>Cape Drifting is a cold region known for its mining colonies.</p>
+				</ul>
+			</li>
+			<li>
+				<h3>The Crawling Kingdom</h3>
+				<ul>
+					<p>Nothing special about this region. It is diverse with no true speciality.<br />It is home to <i>Waverwen</i> (Or the Serpent's Head), a reclusive district of land.</p>
+				</ul>
+			</li>
+			<li>
+				<h3>Greedy</h3>
+				<ul>
+					<p>Greedy is a sub-region close to Endling, and was once used as a spiritual high-ground. It's now lowly populated.</p>
+				</ul>
+			</li>
+		</ul>
 		<h2>Religion</h2>
-		Esmorzar 
-		<div class="subD">
-		
-		</div>
+		<p>Esmorzar largely worships a total of 21 Deities. 8 old Ourobos Deities, and another 13 known as the Pantheon.<br />There is still largely at least 4 other faiths in Esmorzar.</p>
+		<!--<p>In this setting there were 8 Celestial beings who rose the earth from under the sea and shaped the body.</p>-->
+		<ul class="subD">
+			<h3>Old Gods</h3>
+			<ul class="subD">
+				<h4>dsads</h4>
+				<p>dadsads</p>
+			</ul>
+		</ul>
 	</section>
 	
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
     <script>
         var map = L.map('map').setView([0, 0], 1);
-		map.on('click', function(e) {
-			alert(e.latlng);
-		});
+		var popup = L.popup();
+
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("" + e.latlng.toString())
+				.openOn(map);
+		}
+
+		map.on('click', onMapClick);
         L.tileLayer('map/{z}/{x}/{y}.png', {
             minZoom: 1,
             maxZoom: 3,
