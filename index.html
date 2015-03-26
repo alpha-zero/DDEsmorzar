@@ -19,29 +19,55 @@
 			font-weight: 300;
 		}
 		
-		h1, h2, h3, {
-			font-family: 'Roboto Slab', serif;
-		}
+		h1, h2, h3, h4 {font-family: 'Roboto Slab', serif;}
 		
 		header {
-			padding: 32px;
-			height: 64px;
-			text-align: center;
+			padding: 10px 0 0 46px;
+			z-index: 99;
+			position: fixed;
 			
-			font-family: 'Roboto Slab', serif; 
-			font-size: 32px;
+			font-family: 'Roboto Slab', serif;
+			font-size:40px;
 			font-weight: 700;
+			line-height:32px;
+			text-shadow: 0 1px 7px rgba(0,0,0,0.4);
 		}
-		header span {display: block; font-size: 16px; font-weight: 300; font-style: italic;}
+		header span {
+			display: block; 
+			padding-top:4px;
+			font-size: 16px; 
+			font-weight: 300; 
+			font-style: italic;
+			line-height:16px;
+		}
 		
 		div#map {
-			height: 500px;
+			height: 100%;
 			//background: url("mapseapattern.png") center rgba(165,210,212,1);
 			background: center rgba(165,210,212,1);
 			
 			color: rgba(32,32,32,1);
 			transition: .3s all;
 		}
+		
+		div#map form {margin-bottom:0;}
+		
+		div#map .info.legend {
+			display: block;
+			background: white;
+			border-radius: 5px;
+		}
+		
+		div#map .featureInfo {
+			padding: 6px;
+			background: #fff;
+			
+			border-radius: 5px;
+			box-shadow: 0 1px 7px rgba(0,0,0,0.4);
+		}
+		div#map .featureInfo h2 {margin: 0 0 4px}
+		div#map .featureInfo h3 {margin: 0 0 4px}
+		div#map .featureInfo h4 {margin: 0 0 4px}
 		
 		section#content {
 			display: block;
@@ -56,13 +82,6 @@
 			padding: 1px 4px; margin: 0 2px;
 			background: rgba(169, 73, 80, 0.32); border-radius: 4px;
 		}
-		
-		@media (min-width:1000px) {
-			div#map{
-				height: 600px;
-				transition: .3s all;
-			}
-		}
 	</style>
 </head>
 <body>
@@ -73,8 +92,7 @@
 	
     <div id="map" ></div>
 	
-	<section id="content">
-		<!--<p>West and South-West of * and *, Esmorzar is one of the four jewels of Ourobos</p>--> 
+	<!--<section id="content">
 		<p></p>
 		<h2>Regions</h2>
 		<p>West and South-West of Hemmderall and Catal, Esmorzar is one of the 4 continents of Ourobos.</p>
@@ -85,13 +103,15 @@
 			<li>
 				<h3>Endling</h3>
 				<ul>
-					<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in Godsend, Esmorzar's Major city, previous home of the pantheon</p><div class="cityDesc"><span>=</span></div>
+					<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in Godsend, Esmorzar's Major city, previous home of the pantheon</p>
+					<div class="cityDesc"><span>=</span></div>
 				</ul>
 			</li>
 			<li>
 				<h3>Shatterlands</h3>
 				<ul>
-					<p>The Shatterlands is covered in deserts and rock and many islands help extend this region.</p><div class="cityDesc"><span>The Scorchedwastes is a section of map filled with constantly eroding and burning Earth. (It's pretty hot)</span></div>
+					<p>The Shatterlands is covered in deserts and rock and many islands help extend this region.</p>
+					<div class="cityDesc"><span>The Scorchedwastes is a section of map filled with constantly eroding and burning Earth. (It's pretty hot)</span></div>
 				</ul>
 			</li>
 			<li>
@@ -123,7 +143,6 @@
 		</ul>
 		<h2>Religion</h2>
 		<p>Esmorzar largely worships a total of 21 Deities. 8 old Ourobos Deities, and another 13 known as the Pantheon.<br />There is still largely at least 4 other faiths in Esmorzar.</p>
-		<!--<p>In this setting there were 8 Celestial beings who rose the earth from under the sea and shaped the body.</p>-->
 		<ul class="subD">
 			<h3>Old Gods</h3>
 			<ul class="subD">
@@ -132,8 +151,11 @@
 			</ul>
 		</ul>
 	</section>
+	-->
 	
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <script src="thesaurus.js"></script>
+	
     <script>
         var map = L.map('map').setView([0, 0], 1);
 		var popup = L.popup();
@@ -144,7 +166,107 @@
 				.setContent("" + e.latlng.toString())
 				.openOn(map);
 		}
+		
+		var majorcityIcon = L.Icon.extend({
+			options: {
+				iconUrl: 'mjcityicon.png',
+				iconSize: [32, 35],
+				iconAnchor: [16, 35],
+				
+				shadowUrl: 'mjcityiconShadow.png',
+				shadowSize: [40,39],
+				shadowAnchor: [15,39],
+				
+				popupAnchor: [0, -24]
+			}
+		});
+		var minorcityIcon = L.Icon.extend({
+			options: {
+				iconUrl: 'mncityicon.png',
+				iconSize: [32, 32],
+				iconAnchor: [16, 16],
+				
+				popupAnchor: [0, -8]
+			}
+		});
+		var keylocationIcon = L.Icon.extend({
+			options: {
+				iconUrl: 'keylocationicon.png',
+				iconSize: [32, 32],
+				iconAnchor: [16, 16],
+				
+				popupAnchor: [0, -8]
+			}
+		});
+		
+		var mjrcity = new majorcityIcon();
+		var mnrcity = new minorcityIcon();
+		var featureloc = new keylocationIcon();
+		
+		var majorCityGP = [
+			croakenford = L.marker([-60.15244, 27.59766], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			eifelheim = L.marker([71.63599, 14.23828], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			faolin = L.marker([63.62674, -73.125], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			tandent = L.marker([-33.28462, -125.50781], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			teitrasyl = L.marker([-12.72608, 92.98828], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			thragg = L.marker([-41.37681, -49.57031], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			thrull = L.marker([51.17934, 119.70703], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
+			waterhill = L.marker([47.39835, 51.67969], {icon: mjrcity}).bindPopup('This is Littleton, CO.')
+			
+		];
+		var minorCityGP = [
+			lugia = L.marker([-9.79568, -112.85156], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			turning = L.marker([17.30869, -110.74219], {icon: mnrcity}).bindPopup('This is Littleton, CO.')
+		];
+		var keyLocationGP = [
+			maeimadtower = L.marker([28.61346, -48.33984], {icon: featureloc}).bindPopup('This is Littleton, CO.')
+		];
 
+			
+		var majorcities = L.layerGroup(majorCityGP);
+		var minorcities = L.layerGroup(minorCityGP);
+		var keylocation = L.layerGroup(keyLocationGP);
+
+		var overlayMaps = {
+			"Major Cities": majorcities,
+			"Minor Cities": minorcities,
+			"Key Locations": keylocation,
+		};
+		
+		/*var legend = L.control({position: 'bottomleft'});
+
+		legend.onAdd = function (map) {
+			var div = L.DomUtil.create('div', 'info legend');
+			
+        	div.innerHTML +=
+            'dsads';
+			return div;
+		};
+		
+		legend.addTo(map);*/
+		
+		var info = L.control({position: 'bottomleft',maxWidth: 300});
+
+		info.onAdd = function (map) {
+    		this._div = L.DomUtil.create('div', 'featureInfo'); // create a div with a class "featureInfo"
+    		this.update();
+    		return this._div;
+		};
+
+		// method that we will use to update the control based on feature properties passed
+		info.update = function (props) {
+    		this._div.innerHTML = '<h2>Feature Information</h2>' +  (props ?
+        '<b>Town: ' + props.NAME10 + '</b><br />Percent change, 1970-2010<br />(2001-2011 in Qu&eacute;bec): <em><strong> ' + props.CHNG_70_10 + '</strong></em>%<br /><br />1970 Population: ' + props.POP1970 + '<br />1980 Population: ' + props.POP1980 + '<br />1990 Population: ' + props.POP1990 + '<br />2000 Population: ' + props.POP2000 + '<br />2010 Population: ' + props.POP2010 
+        : 'Click on a marker to view details about it');
+		};
+
+		info.addTo(map);
+		
+		L.control.layers(null, overlayMaps, {
+			position: 'topright',
+			collapsed: false
+        }).addTo(map);
+		
 		map.on('click', onMapClick);
         L.tileLayer('map/{z}/{x}/{y}.png', {
             minZoom: 1,
