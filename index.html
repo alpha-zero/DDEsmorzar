@@ -60,34 +60,36 @@
 		
 		div#map .featureInfo {
 			padding: 6px;
+			max-width: 320px;
 			background: #fff;
+			text-align: justify;
 			
 			border-radius: 5px;
 			box-shadow: 0 1px 7px rgba(0,0,0,0.4);
+			
+			transition: all 1s;
 		}
-		div#map .featureInfo h2 {margin: 0 0 4px}
+		div#map .featureInfo h2 {margin: 0}
 		div#map .featureInfo h3 {margin: 0 0 4px}
 		div#map .featureInfo h4 {margin: 0 0 4px}
+		div#map .featureInfo span.subtitle {font-size: 14px; font-style: italic;}
 		
-		section#content {
-			display: block;
-			margin: 32px auto 32px;
-			max-width: 800px;
-			text-align: justify;
+		span.cityfeature {
+			display: inline-block;  
+			padding: 2px; 
+			background-color: rgba(30,30,30,.2);
+			
+			border-radius:3px 
 		}
-		.subD {padding: 0 16px; list-style-type: none;}
-		.cityDesc {font-size: 12px; clear: both;}
-		.cityDesc span {
-			display: inline-block; 
-			padding: 1px 4px; margin: 0 2px;
-			background: rgba(169, 73, 80, 0.32); border-radius: 4px;
-		}
+		
+		@media (min-width: 1200px) {}
+		
 	</style>
 </head>
 <body>
 	<header>
-		Esmorzar
-		<span>Third jewel of Ourobos</span>
+		Ourobos
+		<span>Esmorzar, the third jewel</span>
 	</header>
 	
     <div id="map" ></div>
@@ -159,6 +161,43 @@
     <script>
         var map = L.map('map').setView([0, 0], 1);
 		var popup = L.popup();
+		
+		var info = L.control({position: 'bottomleft'});
+
+		info.onAdd = function (map) {
+    		this._div = L.DomUtil.create('div', 'featureInfo'); // create a div with a class "featureInfo"
+    		this.update();
+    		return this._div;
+		};
+
+		// method that we will use to update the control based on feature properties passed
+		info.update = function (cityName) {
+			cityregion = function () { // Checks if there is a district
+				if (cityName.district !== "" ) {
+					return cityName.district + ', ' + cityName.region
+				} else { return cityName.region }
+			}
+			citypopulation = function () { // To check if there's population
+				if (cityName.majorpop !== "" )  {
+					return '<b>Major races: </b>' + cityName.majorpop + '<br />'
+				} else {return ''}
+			}
+			cityfeatures = function () { // To check if there are landmarks/features
+				if (cityName.features.length !== 0 )  {
+					cityfeaturelist = [];
+					cityName.features.forEach(function(citem) {
+						cityfeaturelist.push("<span class='cityfeature'>" + citem + "</span> ")
+					});
+					return '<b>Features: </b>' + cityfeaturelist + ''
+				} else {return ''}
+			}
+    		this._div.innerHTML = (cityName ?
+				'<h2>' + cityName.name + '</h2><span class="subtitle">' + cityregion() + '</span><br /><div class="cityDesc">' + cityName.description + '</div><br />' + citypopulation() + cityfeatures()
+				: 'Click on a marker to view details about it'
+			);
+		};
+
+		info.addTo(map);
 
 		function onMapClick(e) {
 			popup
@@ -203,23 +242,61 @@
 		var mnrcity = new minorcityIcon();
 		var featureloc = new keylocationIcon();
 		
+		function getCity(cityType) { //this has to return an array 
+			/* what this has to do is turn the cityinfo array into an L.markers array  */
+			
+			var filteredCities = [];
+			
+			// So what I'm planning is I filter my list of cities (cityinfo) first
+			// and after I get my list of cities, convert the list into the proper group
+			
+			cityinfo.foreach(function(cityn) {
+				if (cityn.type == cityType) {
+					filteredCities[cityn] = L.marker(cityn.coord, {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.cityn)});
+				}
+			});
+			
+			return filteredCities;
+		}
+		
 		var majorCityGP = [
-			croakenford = L.marker([-60.15244, 27.59766], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			eifelheim = L.marker([71.63599, 14.23828], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			faolin = L.marker([63.62674, -73.125], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			tandent = L.marker([-33.28462, -125.50781], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			teitrasyl = L.marker([-12.72608, 92.98828], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			thragg = L.marker([-41.37681, -49.57031], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			thrull = L.marker([51.17934, 119.70703], {icon: mjrcity}).bindPopup('This is Littleton, CO.'),
-			waterhill = L.marker([47.39835, 51.67969], {icon: mjrcity}).bindPopup('This is Littleton, CO.')
+			croakenford = L.marker(cityinfo.croakenford.coord, {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.croakenford)}),
+			eifelheim = L.marker([71.63599, 14.23828], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.eifelheim)}),
+			faolin = L.marker([63.62674, -73.125], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.faolin)}),
+			tandent = L.marker([-33.28462, -125.50781], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.tandent)}),
+			teitrasyl = L.marker([-12.72608, 92.98828], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.teitrasyl)}),
+			thragg = L.marker([-41.37681, -49.57031], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.thragg)}),
+			thrull = L.marker([51.17934, 119.70703], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.thrull)}),
+			waterhill = L.marker([47.39835, 51.67969], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.waterhill)})
 			
 		];
 		var minorCityGP = [
+			albanon = L.marker([-77.11803, -2.10937], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			brova = L.marker([-57.13624, 91.75781], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			cactir = L.marker([71.01696, 80.85937], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			coaltown = L.marker([0.17578, -140.97656], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			elheim = L.marker([53.64464, -5.625], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			fallcrest = L.marker([3.33795, 44.82422], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			grenth = L.marker([-48.34165, -78.92578], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			grogon = L.marker([22.59373, 133.76953], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			hureil = L.marker([-53.74871, -11.07422], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			increst = L.marker([67.33986, 59.41406], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			illyasl = L.marker([39.63954, -1.40625], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			kanteen = L.marker([27.9944, 25.83984], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
 			lugia = L.marker([-9.79568, -112.85156], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			turning = L.marker([17.30869, -110.74219], {icon: mnrcity}).bindPopup('This is Littleton, CO.')
+			mogbalthur = L.marker([56.26776, -95.27344], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			nebelheim = L.marker([60.93043, 33.57422], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			rocton = L.marker([1.40611, -51.85547], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			summerhall = L.marker([1.40611, 21.26953], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			trasten = L.marker([34.74161, -92.98828], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			turning = L.marker([17.30869, -110.74219], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.turning)}),
+			waverlycoast = L.marker([18.97903, -131.13281], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			yestir = L.marker([71.35707, -43.59375], {icon: mnrcity}).bindPopup('This is Littleton, CO.')
 		];
 		var keyLocationGP = [
-			maeimadtower = L.marker([28.61346, -48.33984], {icon: featureloc}).bindPopup('This is Littleton, CO.')
+			maeimadtower = L.marker([28.61346, -48.33984], {icon: featureloc}).bindPopup('This is Littleton, CO.'),
+			forendicastle = L.marker([-56.17002, -74.88281], {icon: featureloc}).bindPopup('This is Littleton, CO.'),
+			caediumforks = L.marker([12.03932, 101.25], {icon: featureloc}).bindPopup('This is Littleton, CO.')
 		];
 
 			
@@ -245,23 +322,6 @@
 		
 		legend.addTo(map);*/
 		
-		var info = L.control({position: 'bottomleft',maxWidth: 300});
-
-		info.onAdd = function (map) {
-    		this._div = L.DomUtil.create('div', 'featureInfo'); // create a div with a class "featureInfo"
-    		this.update();
-    		return this._div;
-		};
-
-		// method that we will use to update the control based on feature properties passed
-		info.update = function (props) {
-    		this._div.innerHTML = '<h2>Feature Information</h2>' +  (props ?
-        '<b>Town: ' + props.NAME10 + '</b><br />Percent change, 1970-2010<br />(2001-2011 in Qu&eacute;bec): <em><strong> ' + props.CHNG_70_10 + '</strong></em>%<br /><br />1970 Population: ' + props.POP1970 + '<br />1980 Population: ' + props.POP1980 + '<br />1990 Population: ' + props.POP1990 + '<br />2000 Population: ' + props.POP2000 + '<br />2010 Population: ' + props.POP2010 
-        : 'Click on a marker to view details about it');
-		};
-
-		info.addTo(map);
-		
 		L.control.layers(null, overlayMaps, {
 			position: 'topright',
 			collapsed: false
@@ -271,7 +331,7 @@
         L.tileLayer('map/{z}/{x}/{y}.png', {
             minZoom: 1,
             maxZoom: 3,
-            attribution: '@AZEZAROO &copy;',
+            attribution: '@AZEZAROO ALPHA-ZERO AUTOMATIC-SPIRIT &copy;',
 			noWrap: true,
             tms: true
         }).addTo(map);
