@@ -271,32 +271,32 @@
 			
 		];
 		var minorCityGP = [
-			albanon = L.marker([-77.11803, -2.10937], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			brova = L.marker([-57.13624, 91.75781], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			cactir = L.marker([71.01696, 80.85937], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			coaltown = L.marker([0.17578, -140.97656], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			elheim = L.marker([53.64464, -5.625], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			fallcrest = L.marker([3.33795, 44.82422], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			grenth = L.marker([-48.34165, -78.92578], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			grogon = L.marker([22.59373, 133.76953], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			hureil = L.marker([-53.74871, -11.07422], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			increst = L.marker([67.33986, 59.41406], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			illyasl = L.marker([39.63954, -1.40625], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			kanteen = L.marker([27.9944, 25.83984], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			lugia = L.marker([-9.79568, -112.85156], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			mogbalthur = L.marker([56.26776, -95.27344], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			nebelheim = L.marker([60.93043, 33.57422], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			rocton = L.marker([1.40611, -51.85547], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			summerhall = L.marker([1.40611, 21.26953], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			trasten = L.marker([34.74161, -92.98828], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
+			albanon = L.marker([-77.11803, -2.10937], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.albanon)}),
+			brova = L.marker([-57.13624, 91.75781], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.brova)}),
+			cactir = L.marker([71.01696, 80.85937], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.cactir)}),
+			coaltown = L.marker([0.17578, -140.97656], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.coaltown)}),
+			elheim = L.marker([53.64464, -5.625], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.elheim)}),
+			fallcrest = L.marker([3.33795, 44.82422], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.fallcrest)}),
+			grenth = L.marker([-48.34165, -78.92578], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.grenth)}),
+			grogon = L.marker([22.59373, 133.76953], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.grogon)}),
+			hureil = L.marker([-53.74871, -11.07422], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.hureil)}),
+			increst = L.marker([67.33986, 59.41406], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.increst)}),
+			illyasyl = L.marker([39.63954, -1.40625], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.illyasyl)}),
+			kanteen = L.marker([27.9944, 25.83984], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.kanteen)}),
+			lugia = L.marker([-9.79568, -112.85156], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.lugia)}),
+			mogbalthur = L.marker([56.26776, -95.27344], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.mogbalthur)}),
+			nebelheim = L.marker([60.93043, 33.57422], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.nebelheim)}),
+			rocton = L.marker([1.40611, -51.85547], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.rocton)}),
+			summerhall = L.marker([1.40611, 21.26953], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.summerhall)}),
+			trasten = L.marker([34.74161, -92.98828], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.trasten)}),
 			turning = L.marker([17.30869, -110.74219], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.turning)}),
-			waverlycoast = L.marker([18.97903, -131.13281], {icon: mnrcity}).bindPopup('This is Littleton, CO.'),
-			yestir = L.marker([71.35707, -43.59375], {icon: mnrcity}).bindPopup('This is Littleton, CO.')
+			waverlycoast = L.marker([18.97903, -131.13281], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.waverlycoast)}),
+			yestir = L.marker([71.35707, -43.59375], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.yestir)})
 		];
 		var keyLocationGP = [
-			maeimadtower = L.marker([28.61346, -48.33984], {icon: featureloc}).bindPopup('This is Littleton, CO.'),
-			forendicastle = L.marker([-56.17002, -74.88281], {icon: featureloc}).bindPopup('This is Littleton, CO.'),
-			caediumforks = L.marker([12.03932, 101.25], {icon: featureloc}).bindPopup('This is Littleton, CO.')
+			maeimadtower = L.marker([28.61346, -48.33984], {icon: featureloc}).bindPopup('Maeimad Magic Tower'),
+			forendicastle = L.marker([-56.17002, -74.88281], {icon: featureloc}).bindPopup('Forendi Castle'),
+			caediumforks = L.marker([12.03932, 101.25], {icon: featureloc}).bindPopup('Caedium Forks')
 		];
 
 			
