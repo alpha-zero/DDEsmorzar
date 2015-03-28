@@ -19,12 +19,70 @@
 			font-weight: 300;
 		}
 		
+		
 		h1, h2, h3, h4 {font-family: 'Roboto Slab', serif;}
+		
+		div#container {
+			width: 100%; height: 100%;
+		}
+		
+		section#mapcontainer {}
+
+		#discontainer::-webkit-scrollbar {
+			width: 12px;
+			background-color: rgba(36, 32, 32, 1);
+		}
+		#discontainer::-webkit-scrollbar-track {
+			border-radius: 10px;
+			background-color: rgba(36, 32, 32, 1);
+		}
+		#discontainer::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			background-color: #555;
+		}
+
+		
+		section#discontainer {font-size: 12px;}
+		div#discontent {padding:16px;text-align: justify;}		
+		
+		/*** If the screen is smaller than 1200 ***/
+		@media (max-width:1200px) { 
+			section#mapcontainer {
+				padding: 2% 16px;
+				height: 96%;
+			}
+			
+			section#discontainer {padding-top: 0;}
+		}
+		
+		/*** If the screen is bigger than 1200 ***/
+		@media (min-width:1200px) { 
+			section#mapcontainer { 
+				float:left;
+				width: 66%; height: 100%;
+			}
+			
+			section#discontainer {
+				float: left; 
+				width:34%; height: 100%; 
+				overflow-y: scroll;
+			}
+			
+			div#discontent {
+			height: 100%; 
+			}
+		}
+		
+		
+		
+	/*** **********************  ***/
+	/*** STARTING THE MAP BLOCK  ***/
+	/*** **********************  ***/
 		
 		header {
 			padding: 10px 0 0 46px;
 			z-index: 99;
-			position: fixed;
+			position: absolute;
 			
 			font-family: 'Roboto Slab', serif;
 			font-size:40px;
@@ -81,79 +139,93 @@
 			
 			border-radius:3px 
 		}
-		
-		@media (min-width: 1200px) {}
+	
+	/*** MAP BLOCK END ***/
+	
+	/*** **************************************** ***/
+	/*** THIS BLOCK IS FOR THE DESCRIPTION COLUMN ***/
+	/*** **************************************** ***/
+	
+	section#discontainer {
+	
+	}
+	
+	/*** END COLUMN DESCRIPTION BLOCK ***/
 		
 	</style>
 </head>
 <body>
-	<header>
-		Ourobos
-		<span>Esmorzar, the third jewel</span>
-	</header>
+	<div id="container">
+		
+		<section id="mapcontainer">
+			<header>
+				Ourobos
+				<span>Esmorzar, the third jewel</span>
+			</header>
+			<div id="map" ></div>
+		</section>
+		
+		<section id="discontainer">
+			<div id="discontent">
+				<h2>Regions</h2>
+				<p>West and South-West of Hemmderall and Catal, Esmorzar is one of the 4 continents of Ourobos.</p>
+				<p>Esmorzar is split into 5(6) regions of land.</p>
+				<ul>
+				<li>The major race in this continent is human.</li></ul>
+				<ul class="subD">
+					<li>
+						<h3>Endling</h3>
+						<ul>
+							<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in Godsend, Esmorzar's Major city, previous home of the pantheon</p>
+							<div class="cityDesc"><span>=</span></div>
+						</ul>
+					</li>
+					<li>
+						<h3>Shatterlands</h3>
+						<ul>
+							<p>The Shatterlands is covered in deserts and rock and many islands help extend this region.</p>
+							<div class="cityDesc"><span>The Scorchedwastes is a section of map filled with constantly eroding and burning Earth. (It's pretty hot)</span></div>
+						</ul>
+					</li>
+					<li>
+						<h3>Leylands</h3>
+						<ul>
+							<p>The most magical region in Esmorzar, the Leylands, has become home to many elf and the like. This region also has the most mage towers compared to the others.</p>
+							<p>This region has a large wall of mountains bordering itself from the Shatterlands' Scorchedwastes and parts of the Endling Kingdom.</p>
+							<div class="cityDesc"><span>The Leylands is majorly held by elfkin in Myeiwar and other forested sections of the Leylands</span></div>
+						</ul>
+					</li>
+					<li>
+						<h3>The Drifting Cape</h3>
+						<ul>
+							<p>Cape Drifting is a cold region known for its mining colonies.</p>
+						</ul>
+					</li>
+					<li>
+						<h3>The Crawling Kingdom</h3>
+						<ul>
+							<p>Nothing special about this region. It is diverse with no true speciality.<br />It is home to <i>Waverwen</i> (Or the Serpent's Head), a reclusive district of land.</p>
+						</ul>
+					</li>
+					<li>
+						<h3>Greedy</h3>
+						<ul>
+							<p>Greedy is a sub-region close to Endling, and was once used as a spiritual high-ground. It's now lowly populated.</p>
+						</ul>
+					</li>
+				</ul>
+				<h2>Religion</h2>
+				<p></p>
+			</div>
+		</section>
 	
-    <div id="map" ></div>
+		<!--<section id="content">
+			<p></p>
+			
+		</section>
+		-->
 	
-	<!--<section id="content">
-		<p></p>
-		<h2>Regions</h2>
-		<p>West and South-West of Hemmderall and Catal, Esmorzar is one of the 4 continents of Ourobos.</p>
-		<p>Esmorzar is split into 5(6) regions of land.</p>
-		<ul>
-		<li>The major race in this continent is human.</li></ul>
-		<ul class="subD">
-			<li>
-				<h3>Endling</h3>
-				<ul>
-					<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in Godsend, Esmorzar's Major city, previous home of the pantheon</p>
-					<div class="cityDesc"><span>=</span></div>
-				</ul>
-			</li>
-			<li>
-				<h3>Shatterlands</h3>
-				<ul>
-					<p>The Shatterlands is covered in deserts and rock and many islands help extend this region.</p>
-					<div class="cityDesc"><span>The Scorchedwastes is a section of map filled with constantly eroding and burning Earth. (It's pretty hot)</span></div>
-				</ul>
-			</li>
-			<li>
-				<h3>Leylands</h3>
-				<ul>
-					<p>The most magical region in Esmorzar, the Leylands, has become home to many elf and the like. This region also has the most mage towers compared to the others.</p>
-					<p>This region has a large wall of mountains bordering itself from the Shatterlands' Scorchedwastes and parts of the Endling Kingdom.</p>
-					<div class="cityDesc"><span>The Leylands is majorly held by elfkin in Myeiwar and other forested sections of the Leylands</span></div>
-				</ul>
-			</li>
-			<li>
-				<h3>The Drifting Cape</h3>
-				<ul>
-					<p>Cape Drifting is a cold region known for its mining colonies.</p>
-				</ul>
-			</li>
-			<li>
-				<h3>The Crawling Kingdom</h3>
-				<ul>
-					<p>Nothing special about this region. It is diverse with no true speciality.<br />It is home to <i>Waverwen</i> (Or the Serpent's Head), a reclusive district of land.</p>
-				</ul>
-			</li>
-			<li>
-				<h3>Greedy</h3>
-				<ul>
-					<p>Greedy is a sub-region close to Endling, and was once used as a spiritual high-ground. It's now lowly populated.</p>
-				</ul>
-			</li>
-		</ul>
-		<h2>Religion</h2>
-		<p>Esmorzar largely worships a total of 21 Deities. 8 old Ourobos Deities, and another 13 known as the Pantheon.<br />There is still largely at least 4 other faiths in Esmorzar.</p>
-		<ul class="subD">
-			<h3>Old Gods</h3>
-			<ul class="subD">
-				<h4>dsads</h4>
-				<p>dadsads</p>
-			</ul>
-		</ul>
-	</section>
-	-->
+	</div>
 	
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
     <script src="thesaurus.js"></script>
