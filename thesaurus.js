@@ -12,6 +12,7 @@ var cityinfo = {
 		"description" : "The harbor city of Croakenford is maybe the most important city since it is the main port for exports and exports in Esmorzar.",
 		"majorpop" : "Human, Diverse",
 		"features" : ["Grand Harbor", "Trade export market"],
+		"vip" : [],
 	},
 	"eifelheim" : {
 		"id" : 1,
@@ -23,6 +24,7 @@ var cityinfo = {
 		"description" : "The central and capital Elven city in Esmorzar. Deep in to eh Mweiwar Wilds, it is a very defensible location protected by the surrounding Elfkin",
 		"majorpop" : "Elven",
 		"features" : [],
+		"vip" : [],
 	},
 	"faolin" : {
 		"id" : 2,
@@ -34,6 +36,7 @@ var cityinfo = {
 		"description" : "The Northern Crawl is a mountainous area of Ezmorzar, and in a clearing lies Faolin, a city known for its farmland",
 		"majorpop" : "Human, Dwarven, Diverse",
 		"features" : [],
+		"vip" : [],
 	},
 	"tandent" : {
 		"id" : 3,
@@ -45,6 +48,7 @@ var cityinfo = {
 		"description" : "The snout of Waverwen, Tandent is the capital of the Waverwen district. A large bustling city that maintains the whole regions trading and marketing.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"teitrasyl" : {
 		"id" : 4,
@@ -56,6 +60,7 @@ var cityinfo = {
 		"description" : "The kingsland of Esmorzar, the home of the Pantheon, Teitrasyl holds some of the most historical and priceless monuments and features in Esmorzar.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"thragg" : {
 		"id" : 5,
@@ -67,6 +72,7 @@ var cityinfo = {
 		"description" : "One of the 3 major Dwarven cities and sister city to Thrull, Thragg was a city made to exploit the great mineral harvests of the Craggy.",
 		"majorpop" : "Dwarven",
 		"features" : ["adssd"],
+		"vip" : [],
 	},
 	"thrull" : {
 		"id" : 6,
@@ -78,6 +84,7 @@ var cityinfo = {
 		"description" : "The sister city of Thragg, Thrull relies on its cold coast for the harvest and export for sustaining trade prominence",
 		"majorpop" : "Dwarven",
 		"features" : [],
+		"vip" : [],
 	},
 	"waterhill" : {
 		"id" : 7,
@@ -89,6 +96,7 @@ var cityinfo = {
 		"description" : "An outpost village turned into a trade center, sitting at the crossroads between major cities it serves as a hub between them. It fills an identical job to Rocton, a smaller city. This village relies on farmland and lumber harvest for economy.",
 		"majorpop" : "Elven, Dwarven, Diverse",
 		"features" : [],
+		"vip" : [],
 	},
 	
 // ## Minor Cities & Features sorted by region 
@@ -107,6 +115,7 @@ var cityinfo = {
 		"description" : "The outpost township of turning is one of the major villages that acts as guards to the gates of Waverwen",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"lugia" : {
 		"id" : 8,
@@ -118,6 +127,7 @@ var cityinfo = {
 		"description" : "Most of the the treasuring Waverwen holds is transported here.",
 		"majorpop" : "",
 		"features" : ["Main Bank of Waverwen"],
+		"vip" : [],
 	},
 	"waverlycoast" : {
 		"id" : 8,
@@ -129,6 +139,7 @@ var cityinfo = {
 		"description" : "The harbor village of Waverly Coast is important for the economy of Waverwen as this township delivers most of the food resources, catching game from nearly areas and using the nearby waters for fishing.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"coaltown" : {
 		"id" : 8,
@@ -140,6 +151,7 @@ var cityinfo = {
 		"description" : "The outpost township of turning is one of the major villages that acts as guards to the gates of Waverwen",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 		// Yiva
@@ -154,6 +166,7 @@ var cityinfo = {
 		"description" : "A small village town on the eastern coast of Yiva.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 		// Nothern Crawl
@@ -168,6 +181,7 @@ var cityinfo = {
 		"description" : "The fortress in the mountains, the youngest of the 3 Esmorzar Dwarven cities.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"yestir" : {
 		"id" : 8,
@@ -179,6 +193,7 @@ var cityinfo = {
 		"description" : "Sitting in the mountains in the Northern Peaks, a village.",
 		"majorpop" : "",
 		"features" : ["Cartographers Guild tower"],
+		"vip" : [],
 	},
 
 	// Cape Drifting
@@ -193,6 +208,7 @@ var cityinfo = {
 		"description" : "In a snowy harbor in the Drifting Cape, Cactir a fishing town.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 
 	// Endling
@@ -209,6 +225,7 @@ var cityinfo = {
 		"description" : "A village sitting in the intersection in Brocking. It sits on the Kings Road, connecting multiple regions.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"grogon" : {
 		"id" : 8,
@@ -217,9 +234,10 @@ var cityinfo = {
 		"name" : "Grogon",
 		"region" : "Endling",
 		"district" : "Brocking",
-		"description" : "A village sitting on Brocking's Cape.",
+		"description" : "A village sitting on Brocking's Cape on the East.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"caediumforks" : {
 		"id" : 8,
@@ -228,9 +246,10 @@ var cityinfo = {
 		"name" : "The Caedium Forks",
 		"region" : "Endling",
 		"district" : "Brocking",
-		"description" : "The outpost township of turning is one of the major villages that acts as guards to the gates of Waverwen",
+		"description" : "",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 		// Godsend	
@@ -245,10 +264,11 @@ var cityinfo = {
 		"coord" : [17.30869, -110.74219],
 		"name" : "Nebelheim",
 		"region" : "Endling",
-		"district" : "Trevoy 'The Forks'",
+		"district" : "Trevoy 'The Crossing'",
 		"description" : "",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 	// LEYLANDS
@@ -262,9 +282,10 @@ var cityinfo = {
 		"name" : "Increst",
 		"region" : "Leylands",
 		"district" : "Dweiwar",
-		"description" : "",
+		"description" : "A northern outpost township",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"kanteen" : {
 		"id" : 8,
@@ -276,6 +297,7 @@ var cityinfo = {
 		"description" : "",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 		// Kotia
@@ -290,6 +312,7 @@ var cityinfo = {
 		"description" : "Serves as a bridging village connecting the regions together, it sits at an intersection on the Kings road.",
 		"majorpop" : "",
 		"features" : ["Adventurers Guild"],
+		"vip" : [],
 	},
 	"illyasyl" : {
 		"id" : 8,
@@ -301,6 +324,7 @@ var cityinfo = {
 		"description" : "An elven outpost village that borders the Mweiwar Wilds. This village serves as guard to the elven cities within Mweiwar.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"maeimadtower" : {
 		"id" : 8,
@@ -312,6 +336,7 @@ var cityinfo = {
 		"description" : "",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 		//Myeiwar Wilds
@@ -323,9 +348,10 @@ var cityinfo = {
 		"name" : "Elheim",
 		"region" : "Leylands",
 		"district" : "Myeiwar Wilds",
-		"description" : "One of the greater Elven townships in the Myeiwar Wilds. Elheim is known for its skilled hunters.",
+		"description" : "One of the greater Elven townships in the Myeiwar Wilds, Elheim is known for its skilled hunters.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"nebelheim" : {
 		"id" : 8,
@@ -337,6 +363,7 @@ var cityinfo = {
 		"description" : "A greater Elven township in the Myeiwar Wilds.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	
 	// SHATTERLANDS
@@ -353,6 +380,7 @@ var cityinfo = {
 		"description" : "The Harbor township of Grenth has become known for its bandits and piracy. It's become a popular cove for thieves and the like to come and sell stolen goods.",
 		"majorpop" : "",
 		"features" : ["Black Market"],
+		"vip" : [],
 	},
 	"forendicastle" : {
 		"id" : 8,
@@ -361,9 +389,10 @@ var cityinfo = {
 		"name" : "Forendi Castle",
 		"region" : "Shatterlands",
 		"district" : "Craggy",
-		"description" : "The outpost township of turning is one of the major villages that acts as guards to the gates of Waverwen.",
+		"description" : "",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 		
 		//Karren
@@ -378,6 +407,7 @@ var cityinfo = {
 		"description" : "On the North-Eastern corner of the Scorchedwastes is a torn down desert village known as Summerhall. It used to be a fortress castletown, but has since just become a regular small town for traders and merchants.",
 		"majorpop" : "",
 		"features" : ["Summerhall Castle"],
+		"vip" : [],
 	},
 		//Sharden
 	
@@ -388,9 +418,10 @@ var cityinfo = {
 		"name" : "Albanon",
 		"region" : "Shatterlands",
 		"district" : "Sharden",
-		"description" : "The outpost township of turning is one of the major villages that acts as guards to the gates of Waverwen.",
+		"description" : "A village on the southern shard islands",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 	"hureil" : {
 		"id" : 8,
@@ -402,5 +433,6 @@ var cityinfo = {
 		"description" : "The outpost township of turning is one of the major villages that acts as guards to the gates of Waverwen.",
 		"majorpop" : "",
 		"features" : [],
+		"vip" : [],
 	},
 };
