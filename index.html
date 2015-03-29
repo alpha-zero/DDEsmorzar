@@ -9,9 +9,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto400:900' rel='stylesheet' type='text/css'>
 	
 	<style type="text/css">
+		
+		* {
+			
+		}
+		
 		body {
 			padding: 0; margin: 0;
-			background-color: rgba(36, 32, 32, 1);
+			background-color: rgba(32, 36, 36, 1);
 			color: white;
 			
 			font-family: 'Roboto', sans-serif; 
@@ -24,21 +29,24 @@
 		
 		div#container {
 			width: 100%; height: 100%;
+			transition: all ease-in-out 1s;
 		}
 		
 		section#mapcontainer {}
 
-		#discontainer::-webkit-scrollbar {
+		::-webkit-scrollbar {
 			width: 12px;
-			background-color: rgba(36, 32, 32, 1);
+			background-color: rgba(32, 36, 36, 1);
 		}
-		#discontainer::-webkit-scrollbar-track {
+		::-webkit-scrollbar-track {
 			border-radius: 10px;
-			background-color: rgba(36, 32, 32, 1);
+			background-color:rgba(32, 36, 36, 1);
 		}
-		#discontainer::-webkit-scrollbar-thumb {
-			border-radius: 10px;
-			background-color: #555;
+		::-webkit-scrollbar-thumb {
+			background-color: rgba(85, 85, 85, .33);
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background-color: rgba(85, 85, 85, 1);
 		}
 
 		
@@ -150,6 +158,18 @@
 	
 	}
 	
+	section#discontainer ul {padding-left: 16px;}
+	ul.subD {
+		list-style-type: none;
+	}
+	
+	#discontent .cityDesc>span {
+		display: inline-block; 
+		padding: 2px;
+		background-color: rgba(128,128,128,.16);
+		border-radius: 3px;
+	}
+	
 	/*** END COLUMN DESCRIPTION BLOCK ***/
 		
 	</style>
@@ -167,8 +187,8 @@
 		
 		<section id="discontainer">
 			<div id="discontent">
-				<h2>Regions</h2>
 				<p>West and South-West of Hemmderall and Catal, Esmorzar is one of the 4 continents of Ourobos.</p>
+				<h2>Regions</h2>
 				<p>Esmorzar is split into 5(6) regions of land.</p>
 				<ul>
 				<li>The major race in this continent is human.</li></ul>
@@ -263,8 +283,17 @@
 					return '<b>Features: </b>' + cityfeaturelist + ''
 				} else {return ''}
 			}
+			cityvip = function () { // To check if there are landmarks/features
+				if (cityName.vip.length !== 0 )  {
+					cityviplist = [];
+					cityName.vip.forEach(function(citem) {
+						cityviplist.push("<span class='cityvip'>" + citem + "</span> ")
+					});
+					return '<b>VIPs: </b>' + cityviplist + ''
+				} else {return ''}
+			}
     		this._div.innerHTML = (cityName ?
-				'<h2>' + cityName.name + '</h2><span class="subtitle">' + cityregion() + '</span><br /><div class="cityDesc">' + cityName.description + '</div><br />' + citypopulation() + cityfeatures()
+				'<h2>' + cityName.name + '</h2><span class="subtitle">' + cityregion() + '</span><br /><div class="cityDesc">' + cityName.description + '</div><br />' + cityvip() + citypopulation() + cityfeatures()
 				: 'Click on a marker to view details about it'
 			);
 		};
