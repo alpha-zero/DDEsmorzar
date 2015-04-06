@@ -170,6 +170,30 @@
 		border-radius: 3px;
 	}
 	
+	#discontent table.religiontable {
+		font-size: 12px; font-weight: 300; padding-bottom: 16px; border-bottom: 1px solid rgba(120,120,120,.5); margin-bottom: 16px;
+	}
+	
+	#discontent .rali {text-align: center;}
+	
+	td {}
+	.relibodygrp {margin-bottom: 320px;}
+	tbody.relibodygrp tr:nth-child(odd) {
+		background-color: rgba(128,128,128,.1);
+	}
+	.rtr {padding: 4px;}
+	.rsym {text-align: center;}
+	
+	/*** If the screen is smaller than 1200 ***/
+	@media (max-width:1200px) {
+		#discontent table.religiontable {width:66%;max-width: 700px;}
+	}
+	
+	/*** If the screen is bigger than 1200 ***/
+	@media (min-width:1200px) { 
+		#discontent table.religiontable {width: 100%;}
+	}
+	
 	/*** END COLUMN DESCRIPTION BLOCK ***/
 		
 	</style>
@@ -235,7 +259,163 @@
 					</li>
 				</ul>
 				<h2>Religion</h2>
-				<p></p>
+				<p>The larger faiths in Esmorzar target these old gods and their offspring known as the pantheon.</p>
+				<table class="religiontable relioldgod" style="">
+					<thead>
+						<th class="rtr">Symbol</th>
+						<th class="rtr">Deity</th>
+						<th class="rtr">Alignment</th>
+						<th class="rtr">Domain</th>
+					</thead>
+					<tbody class="relibodygrp ">
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-albotas.png" title="A crescent cross" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Albotas</b>, goddess of the sky</td>
+							<td class="rtr rali">NG</td>
+							<td class="rtr rdom">Light</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-bahamut.png" title="Dragon's head in profile" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Bahamut</b>, dragon god of good</td>
+							<td class="rtr rali">LG</td>
+							<td class="rtr rdom">Life, War</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-doldornn.png" title="Longsword crossed over a sheild" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Dol Dornn</b>, goddess of war</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">War, Tempest</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-gigas.png" title="Three stars in a triangle" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Gigas</b>, god of war and strength</td>
+							<td class="rtr rali">CE</td>
+							<td class="rtr rdom">War, Nature</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-gnemu.png" title="A diamond in an octagon" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Gnemu</b>, god of wisdom and space</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">Life, Death</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-ramuh.png" title="Circle on a sideways crescent moon" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Ramuh</b>, god of justice</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">Tempest, Light</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-sepul.png" title="A ribboned horizontal figure eight" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Sepul</b>, goddess of time and fortitude</td>
+							<td class="rtr rali">NE</td>
+							<td class="rtr rdom">Knowledge</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G1-tiamat.png" title="Dragon head with five claw marks" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Tiamat</b>, Dragon god of evil</td>
+							<td class="rtr rali">LE</td>
+							<td class="rtr rdom">Trickery</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="religiontable relinewgod" style="">
+					<thead>
+						<th class="rtr">Symbol</th>
+						<th class="rtr">Deity</th>
+						<th class="rtr">Alignment</th>
+						<th class="rtr">Domain</th>
+					</thead>
+					<tbody class="relibodygrp">
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-brimhelm.png" title="Helmet on a shield" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Brimhelm</b>, diety of shields and protection</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">War</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-chauntea.png" title="Sheaf of grain" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Chauntea</b>, diety of agriculture</td>
+							<td class="rtr rali">NG</td>
+							<td class="rtr rdom">Life</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-egi.png" title="Westward facing black fish" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Egi</b>, diety of deception and misfortune</td>
+							<td class="rtr rali">LG</td>
+							<td class="rtr rdom">Light, Nature</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-eni.png" title="Eastward facing white fish" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Eni</b>, diety of luck and beauty</td>
+							<td class="rtr rali">CE</td>
+							<td class="rtr rdom">Trickery, Nature</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-fafnir.png" title="Serpent in a tear shape" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Fafnir</b>, diety of wealth and prosperity</td>
+							<td class="rtr rali">LE</td>
+							<td class="rtr rdom">Knowledge, Trickery</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-hestero.png" title="Five gems in a circle" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Hestero</b>, diety of trade and craft</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">Knowledge</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-kelemvor.png" title="Upright skeletal arm holding balanced scales" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Kelemvor</b>, diety of the dead</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">Death</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-moradin.png" title="Green hood with two red eyes" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Moradin</b>, diety of creation</td>
+							<td class="rtr rali">NE</td>
+							<td class="rtr rdom">Death</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-morgion.png" title="Hammer and anvil" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Morgion</b>, diety of disease and secrecy</td>
+							<td class="rtr rali">LG</td>
+							<td class="rtr rdom">Knowledge</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-selune.png" title="Pair of eyes surrounded by seven stars" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Selune</b>, diety of the moon</td>
+							<td class="rtr rali">N</td>
+							<td class="rtr rdom">Knowledge, Life</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-sylph.png" title="Six Insect wings" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Sylph</b>, diety of courage and self-sacrifice</td>
+							<td class="rtr rali">NG</td>
+							<td class="rtr rdom">Tempest, Life</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-tymora.png" title="face up coin" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Tymora</b>, diety of good fortune</td>
+							<td class="rtr rali">CG</td>
+							<td class="rtr rdom">Trickery</td>
+						</tr>
+						<tr>
+							<td class="rtr rsym"><img src="images/G2-zeboim.png" title="Turtle shell" width="32px" height="32px"/></td>
+							<td class="rtr rdie"><b>Zeboim</b>, diety of the sea and storms</td>
+							<td class="rtr rali">CE</td>
+							<td class="rtr rdom">Tempest</td>
+						</tr>
+					</tbody>
+				</table>
+				<h2>Serpents Head Campaign</h2>
+				<p>This campaign revolves around Waverwen, known as the Serpents head. It sits on the eastern board of the Esmorzar continent in the Crawling Kingdom.</p>
+				<p>In the current age, Waverwen is run by an oligarchy, 7 pillars known as the 7 Wings of Waverwen. These people have lead wWavewen in the past few years securing it into one of the most controlled regions in Esmorzar</p>
+				<h3>Introduction and setting up for the campaign</h3>
+				<p>I mean, it'd be helpful to know your characters history coming into this campaign. I will/might/could insert some of your characters history as plot points, whether you've wrote about them or not, so care.</p>
+				<p>Keep into mind I will be tracking your characters pathways (individually) throughout the campaign on this map (at the end of each session)</p>
+				<ul>
+					<p><b>Why is my character in the Crawling Kingdom?<br /></b>For the story's introduction, the characters will be in Yiva, making their way to Waverwen by horse caravan with a few other civilians and migrants. The caravan travelled from the Eastern way of the Kings Road. </p>
+					<p><b>Do I have a hidden history?<br /></b>I may or may not supply your character with a hidden history. A motive or personality trait that could be important to driving the story forward.</p>
+				</ul>
 			</div>
 		</section>
 	

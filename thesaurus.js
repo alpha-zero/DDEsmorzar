@@ -71,7 +71,7 @@ var cityinfo = {
 		"district" : "Craggy",
 		"description" : "One of the 3 major Dwarven cities and sister city to Thrull, Thragg was a city made to exploit the great mineral harvests of the Craggy.",
 		"majorpop" : "Dwarven",
-		"features" : ["adssd"],
+		"features" : ["Canyon Cavern"],
 		"vip" : [],
 	},
 	"thrull" : {
@@ -178,10 +178,10 @@ var cityinfo = {
 		"name" : "Mog Balthur",
 		"region" : "Crawling Kingdom",
 		"district" : "Nothern Crawl",
-		"description" : "The fortress in the mountains, the youngest of the 3 Esmorzar Dwarven cities.",
-		"majorpop" : "",
+		"description" : "The fortress in the mountains, the youngest of the 3 Esmorzar Dwarven cities. Unlike the other two cities, Mog Balthur is run by an elected official",
+		"majorpop" : "Dwarven",
 		"features" : [],
-		"vip" : [],
+		"vip" : ["Mayor <b>Carvel Copperbottom</b>"],
 	},
 	"yestir" : {
 		"id" : 8,
