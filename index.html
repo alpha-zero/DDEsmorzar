@@ -25,7 +25,7 @@
 		}
 		
 		
-		h1, h2, h3, h4 {font-family: 'Roboto Slab', serif;}
+		h1, h2, h3, h4 {font-family: 'Roboto Slab', serif; clear: both}
 		
 		div#container {
 			width: 100%; height: 100%;
@@ -158,6 +158,26 @@
 	
 	}
 	
+	span.GMNote {
+		display: block;
+		float: right;
+		padding: 8px; margin-bottom: 16px;
+		
+		background: rgba(242,181,192,1);
+		background: -moz-linear-gradient(top, rgba(242,181,192,1) 0%, rgba(240,153,168,1) 100%);
+		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(242,181,192,1)), color-stop(100%, rgba(240,153,168,1)));
+		background: -webkit-linear-gradient(top, rgba(242,181,192,1) 0%, rgba(240,153,168,1) 100%);
+		background: -o-linear-gradient(top, rgba(242,181,192,1) 0%, rgba(240,153,168,1) 100%);
+		background: -ms-linear-gradient(top, rgba(242,181,192,1) 0%, rgba(240,153,168,1) 100%);
+		background: linear-gradient(to bottom, rgba(242,181,192,1) 0%, rgba(240,153,168,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2b5c0', endColorstr='#f099a8', GradientType=0 );
+		
+		border-radius: 16px 16px 0 16px;
+		box-shadow: 0 2px 12px rgba(0,0,0,.6);
+		
+		color: rgba(32, 36, 36, 1);
+	}
+	
 	section#discontainer ul {padding-left: 16px;}
 	ul.subD {
 		list-style-type: none;
@@ -212,6 +232,7 @@
 		<section id="discontainer">
 			<div id="discontent">
 				<p>West and South-West of Hemmderall and Catal, Esmorzar is one of the 4 continents of Ourobos.</p>
+				<span class="GMNote">This information is meant to supplement what your character is able to, or should generally know about Esmorzar. <br />If your PC's history should provide more detail about a region, let me know.</span>
 				<h2>Regions</h2>
 				<p>Esmorzar is split into 5(6) regions of land.</p>
 				<ul>
@@ -220,8 +241,7 @@
 					<li>
 						<h3>Endling</h3>
 						<ul>
-							<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in Godsend, Esmorzar's Major city, previous home of the pantheon</p>
-							<div class="cityDesc"><span>=</span></div>
+							<p>The most populated part in Esmorzar. <i>Teitrasyl</i> resides here in the Godsend, Esmorzar's Major city, previous home of the Pantheon</p>
 						</ul>
 					</li>
 					<li>
@@ -369,13 +389,13 @@
 							<td class="rtr rdom">Death</td>
 						</tr>
 						<tr>
-							<td class="rtr rsym"><img src="images/G2-moradin.png" title="Green hood with two red eyes" width="32px" height="32px"/></td>
+							<td class="rtr rsym"><img src="images/G2-moradin.png" title="Hammer and anvil" width="32px" height="32px"/></td>
 							<td class="rtr rdie"><b>Moradin</b>, diety of creation</td>
 							<td class="rtr rali">NE</td>
 							<td class="rtr rdom">Death</td>
 						</tr>
 						<tr>
-							<td class="rtr rsym"><img src="images/G2-morgion.png" title="Hammer and anvil" width="32px" height="32px"/></td>
+							<td class="rtr rsym"><img src="images/G2-morgion.png" title="Green hood with two red eyes" width="32px" height="32px"/></td>
 							<td class="rtr rdie"><b>Morgion</b>, diety of disease and secrecy</td>
 							<td class="rtr rali">LG</td>
 							<td class="rtr rdom">Knowledge</td>
@@ -449,6 +469,11 @@
 					return cityName.district + ', ' + cityName.region
 				} else { return cityName.region }
 			}
+			cityhistory = function() {
+				if (cityName.history !== "" )  {
+					return '<b>Notable History: </b>' + cityName.history + '<br />'
+				} else {return ''}
+			}
 			citypopulation = function () { // To check if there's population
 				if (cityName.majorpop !== "" )  {
 					return '<b>Major races: </b>' + cityName.majorpop + '<br />'
@@ -473,7 +498,7 @@
 				} else {return ''}
 			}
     		this._div.innerHTML = (cityName ?
-				'<h2>' + cityName.name + '</h2><span class="subtitle">' + cityregion() + '</span><br /><div class="cityDesc">' + cityName.description + '</div><br />' + cityvip() + citypopulation() + cityfeatures()
+				'<h2>' + cityName.name + '</h2><span class="subtitle">' + cityregion() + '</span><br /><div class="cityDesc">' + cityName.description + '</div><br />' + cityhistory() + cityvip() + citypopulation() + cityfeatures()
 				: 'Click on a marker to view details about it'
 			);
 		};
