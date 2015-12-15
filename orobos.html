@@ -1,0 +1,227 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+		<title>&diams; OROBOS</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="keywords" content="" />
+	
+	<link rel=icon href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+	<link rel="stylesheet" href="clothing.css" type="text/css">
+	
+	<script src="jquery-2.1.4.min.js"></script>
+	<script src="jquery.collapsible.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900,900italic,400italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div id="container">
+		<section id="mapcontainer" class="">
+			<header class="hideable">
+				Orobos
+				<span>World Map</span>
+			</header>
+			<div id="map" ></div>
+		</section>
+	</div>
+	
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <script src="dictionary.js"></script>
+	
+	<script> /* Map Controls */
+        var map = L.map('map').setView([0, 0], 1);
+		var popup = L.popup();
+		
+		var info = L.control({position: 'bottomleft'});
+
+		info.onAdd = function (map) {
+    		this._div = L.DomUtil.create('div', 'featureInfo'); // create a div with a class "featureInfo"
+    		this.update();
+    		return this._div;
+		};
+
+		// method that we will use to update the control based on feature properties passed
+		info.update = function (cityName) {
+			cityregion = function () { // Checks if there is a district
+				if (cityName.district !== "" ) {
+					return cityName.district + ', ' + cityName.region
+				} else { return cityName.region }
+			}
+			cityhistory = function() {
+				if (cityName.history !== "" )  {
+					return '<b>Notable History: </b>' + cityName.history + '<br />'
+				} else {return ''}
+			}
+			citypopulation = function () { // To check if there's population
+				if (cityName.majorpop !== "" )  {
+					return '<b>Major races: </b>' + cityName.majorpop + '<br />'
+				} else {return ''}
+			}
+			cityfeatures = function () { // To check if there are landmarks/features
+				if (cityName.features.length !== 0 )  {
+					cityfeaturelist = [];
+					cityName.features.forEach(function(citem) {
+						cityfeaturelist.push("<span class='cityfeature'>" + citem + "</span> ")
+					});
+					return '<b>Features: </b>' + cityfeaturelist + ''
+				} else {return ''}
+			}
+			cityvip = function () { // To check if there are landmarks/features
+				if (cityName.vip.length !== 0 )  {
+					cityviplist = [];
+					cityName.vip.forEach(function(citem) {
+						cityviplist.push("<span class='cityvip'>" + citem + "</span> ")
+					});
+					return '<b>VIPs: </b>' + cityviplist + ''
+				} else {return ''}
+			}
+    		this._div.innerHTML = (cityName ?
+				'<h2>' + cityName.name + '</h2><span class="subtitle">' + cityregion() + '</span><br /><div class="cityDesc">' + cityName.description + '</div><br />' + cityhistory() + cityvip() + citypopulation() + cityfeatures()
+				: 'Click on a marker to view details about it'
+			);
+		};
+
+		info.addTo(map);
+
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("" + e.latlng.toString())
+				.openOn(map);
+		}
+		
+		var majorcityIcon = L.Icon.extend({
+			options: {
+				iconUrl: 'mjcityicon.png',
+				iconSize: [32, 35],
+				iconAnchor: [16, 35],
+				
+				shadowUrl: 'mjcityiconShadow.png',
+				shadowSize: [40,39],
+				shadowAnchor: [15,39],
+				
+				popupAnchor: [0, -24]
+			}
+		});
+		var minorcityIcon = L.Icon.extend({
+			options: {
+				iconUrl: 'mncityicon.png',
+				iconSize: [32, 32],
+				iconAnchor: [16, 16],
+				
+				popupAnchor: [0, -8]
+			}
+		});
+		var keylocationIcon = L.Icon.extend({
+			options: {
+				iconUrl: 'keylocationicon.png',
+				iconSize: [32, 32],
+				iconAnchor: [16, 16],
+				
+				popupAnchor: [0, -8]
+			}
+		});
+		
+		var mjrcity = new majorcityIcon();
+		var mnrcity = new minorcityIcon();
+		var featureloc = new keylocationIcon();
+		
+		function getCity(cityType) { //this has to return an array 
+			/* what this has to do is turn the cityinfo array into an L.markers array  */
+			
+			var filteredCities = [];
+			
+			// So what I'm planning is I filter my list of cities (cityinfo) first
+			// and after I get my list of cities, convert the list into the proper group
+			
+			cityinfo.foreach(function(cityn) {
+				if (cityn.type == cityType) {
+					filteredCities[cityn] = L.marker(cityn.coord, {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.cityn)});
+				}
+			});
+			
+			return filteredCities;
+		}
+		
+		var majorCityGP = [
+			croakenford = L.marker(cityinfo.croakenford.coord, {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.croakenford)}),
+			eifelheim = L.marker([71.63599, 14.23828], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.eifelheim)}),
+			faolin = L.marker([63.62674, -73.125], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.faolin)}),
+			tandent = L.marker([-33.28462, -125.50781], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.tandent)}),
+			teitrasyl = L.marker([-12.72608, 92.98828], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.teitrasyl)}),
+			thragg = L.marker([-41.37681, -49.57031], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.thragg)}),
+			thrull = L.marker([51.17934, 119.70703], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.thrull)}),
+			waterhill = L.marker([47.39835, 51.67969], {icon: mjrcity}).on('click', function(e) {info.update(cityinfo.waterhill)})
+			
+		];
+		var minorCityGP = [
+			albanon = L.marker([-77.11803, -2.10937], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.albanon)}),
+			brova = L.marker([-57.13624, 91.75781], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.brova)}),
+			cactir = L.marker([71.01696, 80.85937], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.cactir)}),
+			coaltown = L.marker([0.17578, -140.97656], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.coaltown)}),
+			elheim = L.marker([53.64464, -5.625], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.elheim)}),
+			fallcrest = L.marker([3.33795, 44.82422], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.fallcrest)}),
+			grenth = L.marker([-48.34165, -78.92578], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.grenth)}),
+			grogon = L.marker([22.59373, 133.76953], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.grogon)}),
+			hureil = L.marker([-53.74871, -11.07422], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.hureil)}),
+			increst = L.marker([67.33986, 59.41406], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.increst)}),
+			illyasyl = L.marker([39.63954, -1.40625], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.illyasyl)}),
+			kanteen = L.marker([27.9944, 25.83984], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.kanteen)}),
+			lugia = L.marker([-9.79568, -112.85156], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.lugia)}),
+			mogbalthur = L.marker([56.26776, -95.27344], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.mogbalthur)}),
+			nebelheim = L.marker([60.93043, 33.57422], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.nebelheim)}),
+			rocton = L.marker([1.40611, -51.85547], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.rocton)}),
+			summerhall = L.marker([1.40611, 21.26953], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.summerhall)}),
+			trasten = L.marker([34.74161, -92.98828], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.trasten)}),
+			turning = L.marker([17.30869, -110.74219], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.turning)}),
+			waverlycoast = L.marker([18.97903, -131.13281], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.waverlycoast)}),
+			yestir = L.marker([71.35707, -43.59375], {icon: mnrcity}).on('click', function(e) {info.update(cityinfo.yestir)})
+		];
+		var keyLocationGP = [
+			maeimadtower = L.marker([28.61346, -48.33984], {icon: featureloc}).bindPopup('Maeimad Magic Tower'),
+			forendicastle = L.marker([-56.17002, -74.88281], {icon: featureloc}).bindPopup('Forendi Castle'),
+			caediumforks = L.marker([12.03932, 101.25], {icon: featureloc}).bindPopup('Caedium Forks')
+		];
+
+			
+		var majorcities = L.layerGroup(majorCityGP);
+		var minorcities = L.layerGroup(minorCityGP);
+		var keylocation = L.layerGroup(keyLocationGP);
+
+		var overlayMaps = {
+			"Major Cities": majorcities,
+			"Minor Cities": minorcities,
+			"Key Locations": keylocation,
+		};
+		
+		/*var legend = L.control({position: 'bottomleft'});
+
+		legend.onAdd = function (map) {
+			var div = L.DomUtil.create('div', 'info legend');
+			
+        	div.innerHTML +=
+            'dsads';
+			return div;
+		};
+		
+		legend.addTo(map);*/
+		
+		L.control.layers(null, overlayMaps, {
+			position: 'topright',
+			collapsed: false
+        }).addTo(map);
+		
+		map.on('click', onMapClick);
+        L.tileLayer('map/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 3,
+            attribution: '@AZEZAROO ALPHA-ZERO AUTOMATIC-SPIRIT &copy;',
+			noWrap: true,
+            tms: true
+        }).addTo(map);
+    </script>
+</body>
+</html>
