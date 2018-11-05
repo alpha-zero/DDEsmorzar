@@ -13,8 +13,8 @@ p {margin: 0; padding: 0;}
 ul {}
 
 ul.no-bullet {
-	margin: 4px 0 0 8px; 
-	padding: 0; 
+	margin: 4px 0 0 8px;
+	padding: 0;
 	list-style-type: none;
 }
 ul.no-bullet>li {
@@ -27,10 +27,10 @@ ul.no-bullet>li {
 \** ******* **/
 
 body{
-	background: url(paperpattern.png) rgb(239, 226, 165);
-	
+	background: url(paperpattern.png) rgb(226, 226, 226);
+	/* background-color: rgb(239, 226, 165); */
 	color: rgb(25,25,25);
-	font-family: 'Roboto', sans-serif; 
+	font-family: 'Roboto', sans-serif;
 	font-size: 12px;
 }
 
@@ -41,16 +41,16 @@ h1, h2, h3, h4 {font-family: 'Roboto Slab', serif; clear: both}
 	bottom: -64px; right: 32px;
 	width: 64px; height: 64px;
 	position: fixed;
-	background: rgba(40,180,120,1);	
+	background: rgba(40,180,120,1);
 	font-size: 32px;
 	line-height: 60px;
 	text-align: center;
-	
+
 	border-radius: 32px;
 	box-shadow: 0 4px 16px 0 rgba(32,32,32,.67);
 	color: white;
 	text-decoration: none;
-	
+
 	transition: all .1s;
 	z-index:99;
 }
@@ -62,11 +62,11 @@ h1, h2, h3, h4 {font-family: 'Roboto Slab', serif; clear: both}
 header {
 	display: block;
 	margin: 16px auto 16px;
-	width: 96%; 
+	width: 96%;
 }
 header>h1 {
-	margin: 0; padding: 0; 
-	
+	margin: 0; padding: 0;
+
 	line-height: 80px;
 	font-size: 200px;
 	text-align: center;
@@ -74,7 +74,7 @@ header>h1 {
 	color: white;
 	}
 header>span {
-	display: block; 
+	display: block;
 	text-align: center;
 	font-weight: 500;
 	font-size: 12px;
@@ -86,31 +86,32 @@ header>span {
 div#mapcontainer {
 	position: static;
 	display: block;
+
 }
 #mapcontainer>a.goToFull {
 	position: relative;
-	display: block; 
+	display: block;
 	margin: 0 auto 0;
 	width: 60px;
 	top: -20px;
 	background: rgba(250,250,250,.5);
 	box-shadow: 0 0 10px rgba(0,0,0,.2);
 	border-radius: 15px;
-	
+
 	font-size: 10px;
 	text-decoration: none;
 	text-transform: uppercase;
 	text-align: center;
 	color:rgba(32, 36, 36, 1);
-	
+
 	z-index: 90;
 }
 
 iframe#map {
 	width: 100%;
-	height: 400px;
 	border: none;
 	z-index: 50;
+	height: 400px;
 }
 
 /* CONTENT */
@@ -132,8 +133,8 @@ iframe#map {
 }
 
 #contentcontainer hr {
-	margin: 8px -8px; 
-	border: 0; 
+	margin: 8px -8px;
+	border: 0;
 	border-bottom: dashed 1px rgba(0,0,0,.5);
 }
 
@@ -143,13 +144,39 @@ iframe#map {
 .full-block { clear: both; }
 .half-block {} /* If the display res is big enough, blocks fold to half */
 
+.campaigns_list {
+	padding-bottom: 12px;
+}
+.campaigns_list h1 {
+	border-bottom: 1px dotted rgba(25,25,25,.4);
+	text-align: center;
+	text-size: 100%;
+	text-transform: uppercase;
+}
+.campaigns_list ul {
+	padding: 0; margin: 0;
+}
+.campaigns_list ul>a {
+	display: block;
+	width: 300px; height: 50px;
+	background: rgba(255,255,255,.8);
+	box-shadow: 0 0 16px rgba(25,25,25,.2);
+	text-decoration: none;
+	transition: all 1s;
+}
+.campaigns_list ul>a span {}
+.campaigns_list ul>a:hover {
+	box-shadow: 0 0 16px rgba(25,25,25,.4);
+	transition: all .25s;
+}
+
 .sectionCollapse>h1 {
-	margin: 8px 0 0; 
+	margin: 8px 0 0;
 	padding: 4px 8px;
 	background: rgba(25,25,25,1);
 	text-transform: uppercase;
 	color: rgb(226, 226, 226);
-	
+
 	cursor: pointer;
 }
 .sectionCollapse>div {
@@ -168,7 +195,7 @@ iframe#map {
 		border-radius: 4px;
 	}
 	.keylist>span {
-		display: block; 
+		display: block;
 		padding-left: 4px;
 		background: rgb(68, 206, 212);
 		color: white;
@@ -177,22 +204,32 @@ iframe#map {
 	}
 	.keylist ul {
 		margin: 0;
-		padding: 4px 0; padding-left: 24px;
+		padding: 0;
 	}
 	.keylist ul li {
-		text-indent:-15px;
-		padding-left:15px;
+		text-indent: -16px;
+		padding: 4px; padding-left: 20px;
+		list-style-type: none;
 	}
-	
+
 	.keylist ul li span {
 		font-family: 'Roboto Slab', serif;
 		font-weight: 700;
 	}
 	.keylist ul li span::after {content:" -"}
-	
-	.region-items {
-		
+	.keylist ul li:nth-child(2n) {
+		background-color: rgba(25,25,25,.1);
 	}
+	.region-items {
+
+	}
+
+	.region-items h2 {
+		margin: 0; padding: 0;
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+
 	.region-items>h1 {
 		margin: 0; margin-top: 4px;
 		padding: 0 8px;
@@ -204,13 +241,23 @@ iframe#map {
 		padding: 8px;
 		border: rgba(25,25,25,1) inset 1px;
 	}
-	
-	.region-items h2 {
-		margin: 0; padding: 0;
-		font-size: 12px;
-		text-transform: uppercase;
+	.region-items>div>ul {
+		list-style-type: none;
+		padding: 12px;
+		margin: 0;
 	}
-	
+	.region-items>div>ul>li{
+		padding-bottom: 8px;
+	}
+	.region-items ul>li>h2 {
+		border-bottom: 1px solid rgba(25,25,25,.25);
+		padding: 0 8px;
+		margin: 0 -20px;
+	}
+	.region-items ul>li>p {
+		margin-bottom: 12px;
+	}
+
 		.religiontable {
 			display: inline-block;
 			width: 100%;
@@ -225,15 +272,15 @@ iframe#map {
 		.religiontable .rdie { }
 		.religiontable .rali { text-align: center; text-transform: uppercase;}
 		.religiontable .rdom { }
-		
+
 		div.campaign-info {
-			
+
 		}
 		.campaign-info>h1 {
 			margin: 0; padding: 0 8px;
 			background: rgb(25,25,25);
 			color: rgb(226,226,226);
-			
+
 			cursor: pointer;
 		}
 		.campaign-info>div {
@@ -241,7 +288,7 @@ iframe#map {
 			border: inset 1px rgb(25,25,25);
 			border-top: none;
 		}
-	
+
 	/**  Section Items end**/
 
 /* FOOTER */
@@ -249,8 +296,9 @@ iframe#map {
 footer {
 	display: block;
 	margin: 16px auto 16px;
-	width: 96%; 
-	
+	width: 96%;
+	min-height: 100px;
+
 	font-size: 10px;
 	text-transform: uppercase;
 	text-align: center;
@@ -265,4 +313,27 @@ footer .footerPin {
 	BROWSER CHANGES
 \** ******* ******* **/
 
-	
+@media (min-width:1200px) {
+	header#fullwidthhead {
+		display: none;
+	}
+	div#mapcontainer{
+		height: 100%;
+		width: 70%;
+		float: left;
+		position: fixed;
+	}
+	div#mapcontainer iframe#map{
+		height: 100%;
+	}
+	div#contentcontainer {
+		float: right;
+		width: 30%;
+		position: relative;
+		min-height: 100%;
+	}
+	div.campaigns_list h1 {
+		margin-left: -4px; margin-right: -4px;
+	}
+	section {margin: 4px;}
+}
